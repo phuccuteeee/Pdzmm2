@@ -308,32 +308,3 @@ local Animate = game.Players.LocalPlayer.Character.Animate
     Animate.climb.ClimbAnim.AnimationId = "http://www.roblox.com/asset/?id=1083439238"
     Animate.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=707829716"
     game.Players.LocalPlayer.Character.Humanoid.Jump = false
-Toggle = Tab5:AddToggle({
-    Name = "fps",
-setfpscap(math.huge) -- un block fps 
-
-local plr = game.Players.LocalPlayer
-local gui = Instance.new("ScreenGui")
-gui.ResetOnSpawn = false -- so that it is not destroyed when the local player dies
-gui.Parent = plr:WaitForChild("PlayerGui")
-
-local lbl = Instance.new("TextLabel", gui)
-lbl.Size = UDim2.new(0, 200, 0, 50)
-lbl.Position = UDim2.new(0, 10, 0, 10)
-lbl.TextColor3 = Color3.new(1, 1, 1)
-lbl.BackgroundTransparency = 1
-lbl.Font = Enum.Font.SourceSans
-lbl.TextSize = 24
-
-local fps, frames, lastTime = 0, 0, tick()
-
-game:GetService("RunService").RenderStepped:Connect(function()
-    frames += 1
-    local now = tick()
-    if now - lastTime >= 1 then
-        fps = frames
-        lbl.Text = "FPS: " .. fps
-        frames = 0
-        lastTime = now
-    end
-end)
