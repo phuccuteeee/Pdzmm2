@@ -1,18 +1,7 @@
-loadstring(game:HttpGet(("https://raw.githubusercontent.com/daucobonhi/Ui-Redz-V2/refs/heads/main/UiREDzV2.lua")))()
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/catsay2/Main/refs/heads/main/UIPRO')))()
 
-       local Window = MakeWindow({
-         Hub = {
-         Title = "mm2 test",
-         Animation = "test"
-         },
-        Key = {
-        KeySystem = false,
-        Title = "Key System",
-        Description = "",
-        KeyLink = "",
-        Keys = {"1234"},
-        Notifi = {
-        Notifications = true
+local Window = OrionLib:MakeWindow({Name = "test", HidePremium = false, SaveConfig = true, ConfigFolder = "dxl_bf"})
+
 
 local Tab = Window:MakeTab({
 	Name = "MAIN",
