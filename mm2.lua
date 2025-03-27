@@ -13,6 +13,7 @@ loadstring(game:HttpGet(("https://raw.githubusercontent.com/daucobonhi/Ui-Redz-V
         Keys = {"1234"},
         Notifi = {
         Notifications = true
+
 local Tab = Window:MakeTab({
 	Name = "MAIN",
 	Icon = "rbxassetid://91963776934685",
