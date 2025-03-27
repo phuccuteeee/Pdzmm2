@@ -1,6 +1,27 @@
-local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/catsay2/Main/refs/heads/main/UIPRO')))()
-
-local Window = OrionLib:MakeWindow({Name = "CAT HUB", HidePremium = false, SaveConfig = true, ConfigFolder = "dxl_bf"})
+repeat wait()
+until getgenv().LoadUi and getgenv().IslandCaller and getgenv().SettingManager 
+local Title = "mm2"
+local SubTitle = "test"
+local Fluent = loadstring(game:HttpGet("https://raw.githubusercontent.com/vinhuchi/rblx/main/FixedFluent.lua"))()
+local UiSetting = Fluent.Options
+local IslandCaller = IslandCaller or getgenv().IslandCaller
+local SettingManager = getgenv().SettingManager 
+local Window = getgenv().Window or Fluent:CreateWindow({
+    Title = Title,
+    SubTitle = SubTitle,
+    TabWidth = 160,
+    Size = UDim2.fromOffset(480, 360),
+    Acrylic = false, -- The blur may be detectable, setting this to false disables blur entirely
+    Theme = "Dark",
+    MinimizeKey = Enum.KeyCode.LeftControl -- Used when theres no MinimizeKeybind
+})
+local UiOrders = {"Main Farm","Stack Auto farm","Sub Farming","Status","Player-Status","Fruit","Local Player","Travel","Pvp-Visual","Raid-Material","RaceV4-Mirage","Sea Events","Shop","Setting","Webhook","Game-Server","One Click"}
+local TabCollections = {
+}
+ElementsCollection = {}
+for _,Name in pairs(UiOrders) do
+    ElementsCollection[Name]={}
+end
 
 local Tab = Window:MakeTab({
 	Name = "MAIN",
@@ -22,6 +43,12 @@ local Tab3 = Window:MakeTab({
 
 local Tab4 = Window:MakeTab({
 	Name = "COMBAT",
+	Icon = "rbxassetid://91963776934685",
+	PremiumOnly = false
+}) 
+
+local Tab5 = Window:MakeTab({
+	Name = "test",
 	Icon = "rbxassetid://91963776934685",
 	PremiumOnly = false
 }) 
@@ -279,3 +306,43 @@ Toggle = Tab2:AddToggle({
         end
     end,
 })
+Toggle = Tab5:AddToggle({
+    Name = "test",
+local Animate = game.Players.LocalPlayer.Character.Animate
+    Animate.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=782841498"
+    Animate.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=782841498"
+    Animate.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=616168032"
+    Animate.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=616163682"
+    Animate.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=1083218792"
+    Animate.climb.ClimbAnim.AnimationId = "http://www.roblox.com/asset/?id=1083439238"
+    Animate.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=707829716"
+    game.Players.LocalPlayer.Character.Humanoid.Jump = false
+Toggle = Tab5:AddToggle({
+    Name = "fps",
+setfpscap(math.huge) -- un block fps 
+
+local plr = game.Players.LocalPlayer
+local gui = Instance.new("ScreenGui")
+gui.ResetOnSpawn = false -- so that it is not destroyed when the local player dies
+gui.Parent = plr:WaitForChild("PlayerGui")
+
+local lbl = Instance.new("TextLabel", gui)
+lbl.Size = UDim2.new(0, 200, 0, 50)
+lbl.Position = UDim2.new(0, 10, 0, 10)
+lbl.TextColor3 = Color3.new(1, 1, 1)
+lbl.BackgroundTransparency = 1
+lbl.Font = Enum.Font.SourceSans
+lbl.TextSize = 24
+
+local fps, frames, lastTime = 0, 0, tick()
+
+game:GetService("RunService").RenderStepped:Connect(function()
+    frames += 1
+    local now = tick()
+    if now - lastTime >= 1 then
+        fps = frames
+        lbl.Text = "FPS: " .. fps
+        frames = 0
+        lastTime = now
+    end
+end)
