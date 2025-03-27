@@ -1,28 +1,18 @@
-repeat wait()
-until getgenv().LoadUi and getgenv().IslandCaller and getgenv().SettingManager 
-local Title = "mm2"
-local SubTitle = "test"
-local Fluent = loadstring(game:HttpGet("https://raw.githubusercontent.com/vinhuchi/rblx/main/FixedFluent.lua"))()
-local UiSetting = Fluent.Options
-local IslandCaller = IslandCaller or getgenv().IslandCaller
-local SettingManager = getgenv().SettingManager 
-local Window = getgenv().Window or Fluent:CreateWindow({
-    Title = Title,
-    SubTitle = SubTitle,
-    TabWidth = 160,
-    Size = UDim2.fromOffset(480, 360),
-    Acrylic = false, -- The blur may be detectable, setting this to false disables blur entirely
-    Theme = "Dark",
-    MinimizeKey = Enum.KeyCode.LeftControl -- Used when theres no MinimizeKeybind
-})
-local UiOrders = {"Main Farm","Stack Auto farm","Sub Farming","Status","Player-Status","Fruit","Local Player","Travel","Pvp-Visual","Raid-Material","RaceV4-Mirage","Sea Events","Shop","Setting","Webhook","Game-Server","One Click"}
-local TabCollections = {
-}
-ElementsCollection = {}
-for _,Name in pairs(UiOrders) do
-    ElementsCollection[Name]={}
-end
+loadstring(game:HttpGet(("https://raw.githubusercontent.com/daucobonhi/Ui-Redz-V2/refs/heads/main/UiREDzV2.lua")))()
 
+       local Window = MakeWindow({
+         Hub = {
+         Title = "mm2 test",
+         Animation = "test"
+         },
+        Key = {
+        KeySystem = false,
+        Title = "Key System",
+        Description = "",
+        KeyLink = "",
+        Keys = {"1234"},
+        Notifi = {
+        Notifications = true
 local Tab = Window:MakeTab({
 	Name = "MAIN",
 	Icon = "rbxassetid://91963776934685",
